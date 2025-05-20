@@ -33,9 +33,43 @@ def feladat2():
 
     print(f"3. Hány különböző fajta van? {len(fajtak.keys())}")
 
+def feladat3():
+    legidosebb = kutyak[0]
+    for i in kutyak:
+        if legidosebb.kor < i.kor:
+            legidosebb = i
+    print(f"4. Ki a legidősebb kutya, és hány éves? {legidosebb.nev} {legidosebb.kor}")
+
+def feladat4():
+    gazdi_keres = input("Adj meg egy gazdit: ")
+    print("5. Kérjen be a felhasználótól egy gazdi nevét, és listázza ki az ő kutyáit a képernyőre! ")
+    with open("eszti.txt", "a", encoding="UTF-8") as f:
+        for i in kutyak:
+            if i.gazdi == gazdi_keres:
+                f.write(i.nev)
+                f.write("\n")
+                print(i.nev)
+        
+def feladat5():
+    print("7. Listázza ki azokat a kutyákat, akik több mint 8 évesek!")
+    for i in kutyak:
+        if i.kor > 8:
+            print(i)
+
+def feladat6():
+    print("8. Listázza ki azokat a kutyákat, akik “keverék” fajtájúak!")
+    for i in kutyak:
+        if i.fajta == "keverék":
+            print(i)
+
+
 def main():
     beolvasas()
     feladat1()
     feladat2()
+    feladat3()
+    feladat4()
+    feladat5()
+    feladat6()
 
 main()
